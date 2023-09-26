@@ -39,7 +39,7 @@ Response Body Error
 
 ```json
 {
-  "errors": "name, price, dan qty wajid diisi"
+  "errors": "name, price, image, description, dan qty wajid diisi"
 }
 ```
 
