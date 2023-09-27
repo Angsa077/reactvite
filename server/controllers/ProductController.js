@@ -13,6 +13,8 @@ const createProduct = async (req, res) => {
                 return res.status(400).json({ msg: { message: "gagal upload gambar" } });
             } else {
                 const { name, description, price, qty } = req.body;
+                const parsedQty = parseInt(qty); // Parse qty as an integer
+                const parsedPrice = parseFloat(price); 
                 const image = req.file.filename; // Ambil nama file gambar dari req.file
 
                 const product = await prisma.product.create({
@@ -20,8 +22,8 @@ const createProduct = async (req, res) => {
                         id: uuid(),
                         name: name,
                         description: description,
-                        price: price,
-                        qty: qty,
+                        qty: parsedQty,
+                        price: parsedPrice,
                         image: image,
                         user_id: req.user.id,
                     },

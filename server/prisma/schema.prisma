@@ -24,10 +24,10 @@ model User {
 model Product {
   id String @id @db.VarChar(100)
   name String @db.VarChar(100)
-  price String @db.VarChar(100)
+  price Int
   image String @db.VarChar(100)
   description String @db.Text
-  qty String @db.VarChar(20)
+  qty Int
   user_id Int
   user User @relation(fields: [user_id], references: [id])
 

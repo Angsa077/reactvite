@@ -4,14 +4,20 @@ import path from "path";
 import { fileURLToPath } from 'url';
 import UserRoute from "./routes/UserRoute.js";
 import ProductRoute from "./routes/ProductRoute.js";
+import cors from "cors";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 dotenv.config();
 const app = express();
-app.use(express.json());
 
+app.use(cors({
+    credentials: true,
+    origin: 'http://localhost:5173'
+}));
+
+app.use(express.json());
 app.use(UserRoute);
 app.use(ProductRoute);
 
